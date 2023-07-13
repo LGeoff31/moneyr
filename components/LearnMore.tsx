@@ -103,7 +103,7 @@ const LearnMore = () => {
                     <Typography variant="h4">Never Go Over Budget</Typography>
                     <Typography padding={1} variant="body1">
                       Update your monthly budget to your preference & Reminder
-                      how much you've spent and have left to spend!
+                      how much you&apos;ve spent and have left to spend!
                     </Typography>
                     <CardActions>
                       <Button size="small">Learn More</Button>
