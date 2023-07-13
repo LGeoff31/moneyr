@@ -22,8 +22,8 @@ const Learn = () => {
         <Stack>
           <Typography paddingBottom={2} paddingLeft={3} paddingRight={3}>
             Whether you use an app or a budget worksheet to get a handle on your
-            spending, you'll want to know where your money is going — and then
-            make a plan for where you want it to go.
+            spending, you&apos;ll want to know where your money is going — and
+            then make a plan for where you want it to go.
           </Typography>
 
           <Typography paddingLeft={3} paddingRight={3} paddingBottom={2}>
@@ -44,8 +44,8 @@ const Learn = () => {
             That leaves 50% for needs and 30% for wants, but these are
             parameters you can tweak to suit your reality. For example, if you
             live in an expensive housing market, your monthly mortgage or rent
-            payment might spill a bit into your "wants" budget. Budgets are
-            meant to bend but not be broken.
+            payment might spill a bit into your &apos;wants&apos; budget.
+            Budgets are meant to bend but not be broken.
           </Typography>
 
           <Typography paddingLeft={3} paddingTop={3}>
