@@ -15,13 +15,13 @@
 .intro {
   /* background-image: url(../images/blog_happy-person_header.jpeg); */
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(../images/blog_happy-person_header.jpeg);
+    url(../public/images/blog_happy-person_header.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
 }
 .learn-more {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(../images/learnv2.webp);
+    url(../public/images/learnv2.webp);
   background-repeat: no-repeat;
   background-size: cover;
 }
