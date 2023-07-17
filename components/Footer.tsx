@@ -2,7 +2,7 @@ import React from "react";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import { Box, Button, Container, Link, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import SocialLinkIcon from "./SocialLinkIcon";
 import { BsGithub, BsLinkedin, BsInstagram, BsYoutube } from "react-icons/bs";
 
@@ -15,7 +15,7 @@ const Footer = () => {
             ? theme.palette.grey[200]
             : theme.palette.grey[800],
         p: 6,
-        marginTop: 20,
+        marginTop: 70,
       }}
     >
       <Stack

@@ -18,15 +18,10 @@ export default async function handler(
       return res.status(401).json({ error: `Unauthorized email: ${email}` });
     }
 
-    // Write the actual logic
     // 1. Extract the data from the database.
-    console.log(1);
     const client = await clientPromise;
-    console.log(2);
     const myDB = client.db("budget");
-    console.log(3);
     const myColl = myDB.collection("expenses");
-    console.log(4);
     let expenses = await myColl.find({}).toArray();
     expenses = expenses.filter((e) => e.email === email);
 

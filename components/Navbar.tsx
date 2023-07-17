@@ -1,6 +1,5 @@
 import { Button, Stack, Typography, makeStyles } from "@mui/material";
 import React from "react";
-// import Link from "next/link";
 import Link from "@mui/material/Link";
 import PaidIcon from "@mui/icons-material/Paid";
 

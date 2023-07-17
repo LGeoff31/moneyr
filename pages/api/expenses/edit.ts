@@ -6,7 +6,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  console.log("Running the EDIT API");
   try {
     console.log(req.body);
     if (req.method !== "PATCH") {
@@ -15,9 +14,7 @@ export default async function handler(
         .json({ error: "Method not allowed, only PATCH is allowed." });
     }
 
-    // Write the actual logic
-
-    // 1.Update the database for title, date, descritpion for the specific ID box that is clicked
+    // 1.Update the database for title, date, description for the specific ID box that is clicked
 
     const data = req.body;
     const created = data.created;
@@ -29,11 +26,7 @@ export default async function handler(
 
     let errorMessage = " ";
     let isValid = true;
-    //validation
 
-    // if (is_complete !== false && is_complete !== true) {
-    //   return res.status(400).json({ error: "DID NOT PASS ISCOMPLETE" });
-    // }
     if (id === undefined) {
       return res.status(400).json({ error: "DID NOT PASS ID" });
     }
@@ -52,8 +45,6 @@ export default async function handler(
     }
     //2. update database for title, date, description
 
-    // 3. Add a new todo with this data into the database (MongoDB).
-
     const client = await clientPromise;
     const myDB = client.db("budget");
     const myColl = myDB.collection("expenses");
@@ -68,7 +59,6 @@ export default async function handler(
     if (isValidId === false) {
       return res.status(404).json({ error: "Not valid ID in database" });
     }
-    let newId = new ObjectId(id);
     const result = await myColl.updateMany(
       { _id: new ObjectId(id) },
       {

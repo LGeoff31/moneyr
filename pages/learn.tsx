@@ -16,7 +16,7 @@ const Learn = () => {
         padding={1}
         fontWeight="bold"
       >
-        Learn about the #1 Rule In Finance
+        Learn The #1 Rule In Finance
       </Typography>
       <Stack paddingTop={3} direction="row">
         <Stack>
@@ -60,7 +60,6 @@ const Learn = () => {
           height={500}
           alt="The 50/30/20 budget rule divides take-home income like so: 50% for necessities, 30% for wants and 20% for savings and debt repayment."
           src="https://www.nerdwallet.com/assets/blog/wp-content/uploads/2019/11/50-30-20_budget-graphic_final-770x578.jpg"
-          id="709397"
         />
       </Stack>
       <Calculator />

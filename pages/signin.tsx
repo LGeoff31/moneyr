@@ -2,7 +2,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { initializeMagicLink } from "@/lib/magiclink";
 import React, { useEffect, useState } from "react";
-import { Stack, Button, TextField, Typography } from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -11,21 +11,16 @@ const SignIn = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const magic = initializeMagicLink();
-
     if (!magic) {
       return;
     }
-
     await magic.auth.loginWithMagicLink({ email });
     const userInfo = await magic.user.getInfo();
-    console.log(userInfo);
     if (userInfo.email !== email) {
       // Not logged in properly
       return;
     }
-
-    // Logged in properly
-    // GOOD
+    //logged in properly
     localStorage.setItem("email", email);
 
     // Redirect back home
@@ -81,13 +76,6 @@ const SignIn = () => {
           </Button>
         </>
       )}
-      {/* <input value={email} onChange={(e) => setEmail(e.target.value)} />
-      <Button onClick={handleSubmit} variant="contained">
-        Submit
-      </Button>
-      <Button onClick={handleLogout} variant="contained">
-        Logout
-      </Button> */}
       <Footer />
     </div>
   );

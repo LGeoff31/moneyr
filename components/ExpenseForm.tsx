@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 import {
-  Link,
-  Card,
-  Box,
-  Button,
   Stack,
   Typography,
-  Grid,
   TextField,
   FormControl,
   InputLabel,
@@ -62,6 +57,9 @@ const ExpenseForm: React.FunctionComponent<{
     setCategory("");
     setProcessingSubmit(false);
   };
+  const isTitleOrDescriptionValid = (inputString: string) =>
+    inputString.length <= 0;
+  const isValueValid = (value: any) => !(typeof value === "number");
   return (
     <form>
       <Navbar />
@@ -87,6 +85,8 @@ const ExpenseForm: React.FunctionComponent<{
           value={title}
           sx={{ width: "80vw" }}
           onChange={(e) => setTitle(e.target.value)}
+          required
+          error={isTitleOrDescriptionValid(title)}
         />
         <Stack direction="row">
           <TextField
@@ -96,10 +96,16 @@ const ExpenseForm: React.FunctionComponent<{
             value={value}
             onChange={(e) => setValue(parseFloat(e.target.value))}
             sx={{ width: "50vw" }}
+            required
+            error={isValueValid(value)}
+            helperText={isValueValid(value) ? "Only Numbers Allowed" : ""}
           />
           <FormControl>
-            <InputLabel id="demo-simple-select-label">Category</InputLabel>
+            <InputLabel required id="demo-simple-select-label">
+              Category
+            </InputLabel>
             <Select
+              required
               labelId="demo-simple-select-label"
               value={category}
               sx={{ width: "30vw" }}
@@ -124,6 +130,8 @@ const ExpenseForm: React.FunctionComponent<{
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           sx={{ width: "80vw" }}
+          required
+          error={isTitleOrDescriptionValid(description)}
         />
 
         <LoadingButton

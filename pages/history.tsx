@@ -13,6 +13,7 @@ import {
   Link,
   Stack,
   Typography,
+  LinearProgress,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 
@@ -30,6 +31,10 @@ const zip = (a: any, b: any) => a.map((k: any, i: any) => [k, b[i]]);
 export enum Filter {
   High = "Price: High to Low",
   Low = "Price: Low to High",
+  Category = "Category",
+  Oldest = "Oldest to Newest",
+  Newest = "Newest to Oldest",
+  //add rank by category
 }
 
 const History = () => {
@@ -68,6 +73,10 @@ const History = () => {
 
   const handleAdd = async (): Promise<void> => {
     console.log("reached");
+    const p = await fetch(`/api/finances/clear`, {
+      method: "DELETE",
+    });
+    await p.json();
     const response = await fetch("/api/finances/budget", {
       method: "POST",
       body: JSON.stringify({
@@ -83,7 +92,6 @@ const History = () => {
     });
     const budgets = await result.json();
     const finalBudget = budgets[0].budget;
-
     setMonthlyBudget(finalBudget);
   };
 
@@ -95,11 +103,12 @@ const History = () => {
     if (!userEmail) {
       return;
     }
-
+    console.log("FETCHING DATA ");
     fetchData();
   }, [userEmail]);
 
   if (!dataLoaded) {
+    console.log("Data laoded is ", dataLoaded);
     console.log("user email is", userEmail);
     if (userEmail === "") {
       return (
@@ -133,7 +142,17 @@ const History = () => {
               <Button onClick={handleAdd}>Add</Button>
             </Stack>
           ) : (
-            monthlyBudget
+            <Stack direction="row">
+              {monthlyBudget}
+              <Button
+                sx={{ marginLeft: "10px", fontSize: "12px", padding: "3px" }}
+                className="editButton"
+                variant="contained"
+                onClick={() => setMonthlyBudget("")}
+              >
+                Edit
+              </Button>
+            </Stack>
           )}
         </Stack>
         <Stack direction="row">
@@ -144,10 +163,22 @@ const History = () => {
           <Typography fontWeight="bold">Total Remaining:&nbsp;</Typography>$
           {parseInt(monthlyBudget) - calculateTotalSpending()}
         </Stack>
+        <LinearProgress
+          variant="determinate"
+          value={(calculateTotalSpending() / parseInt(monthlyBudget)) * 100}
+          sx={{
+            height: "10px", // Adjust the height of the progress bar
+            borderRadius: "5px", // Add rounded corners
+            backgroundColor: "#f1f1f1", // Customize the background color
+            "& .MuiLinearProgress-bar": {
+              backgroundColor: "#4caf50", // Customize the progress bar color
+            },
+          }}
+        />
       </Stack>
 
       <FormControl>
-        <InputLabel id="demo-simple-select-label">Filter</InputLabel>
+        <InputLabel id="demo-simple-select-label">Filter by</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           value={filter}
@@ -165,31 +196,68 @@ const History = () => {
           )}
         </Select>
       </FormControl>
-      {/* {filter === "Price: Low to High" && <>hi</>} */}
-      {/* {console.log("filter")} */}
-      {filter === "Price: High to Low"
-        ? data
-            .sort((expense1, expense2) => {
-              return expense1.value < expense2.value ? 1 : -1;
-            })
-            .map((expense) => (
-              <ExpenseCard
-                key={expense._id}
-                expense={expense}
-                fetchData={fetchData}
-              />
-            ))
-        : data
-            .sort((expense1, expense2) => {
-              return expense1.value > expense2.value ? 1 : -1;
-            })
-            .map((expense) => (
-              <ExpenseCard
-                key={expense._id}
-                expense={expense}
-                fetchData={fetchData}
-              />
-            ))}
+
+      {filter === "Price: High to Low" &&
+        data
+          .sort((expense1, expense2) => {
+            return expense1.value < expense2.value ? 1 : -1;
+          })
+          .map((expense) => (
+            <ExpenseCard
+              key={expense._id}
+              expense={expense}
+              fetchData={fetchData}
+            />
+          ))}
+      {filter === "Price: Low to High" &&
+        data
+          .sort((expense1, expense2) => {
+            return expense1.value < expense2.value ? -1 : 11;
+          })
+          .map((expense) => (
+            <ExpenseCard
+              key={expense._id}
+              expense={expense}
+              fetchData={fetchData}
+            />
+          ))}
+      {filter === "Category" &&
+        data
+          .sort((expense1, expense2) => {
+            return expense1.category.localeCompare(expense2.category);
+          })
+          .map((expense) => (
+            <ExpenseCard
+              key={expense._id}
+              expense={expense}
+              fetchData={fetchData}
+            />
+          ))}
+      {filter === "Newest to Oldest" &&
+        data
+          .sort((expense1, expense2) => {
+            return expense2.created_at.localeCompare(expense1.created_at);
+          })
+          .map((expense) => (
+            <ExpenseCard
+              key={expense._id}
+              expense={expense}
+              fetchData={fetchData}
+            />
+          ))}
+      {filter === "Oldest to Newest" &&
+        data
+          .sort((expense1, expense2) => {
+            return expense1.created_at.localeCompare(expense2.created_at);
+          })
+          .map((expense) => (
+            <ExpenseCard
+              key={expense._id}
+              expense={expense}
+              fetchData={fetchData}
+            />
+          ))}
+
       <Footer />
     </div>
   );

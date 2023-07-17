@@ -19,31 +19,16 @@ export default async function handler(
         .json({ error: "Method not allowed, only DELETE is allowed." });
     }
 
-    // Delete a todo from database
+    // Write the actual logic
 
-    const id = req.query.expense_id as string;
-    const error_message = " ";
-    if (id === undefined) {
-      return res.status(400).json({ error: "DID NOT PASS ID" });
-    }
+    // Delete a todo from database
 
     const client = await clientPromise;
     const myDB = client.db("budget");
-    const myColl = myDB.collection("expenses");
+    const myColl = myDB.collection("finances");
     const arrayLists = await myColl.find({}).toArray();
 
-    let isValidId = false;
-    for (const expense of arrayLists) {
-      console.log(expense._id, id);
-      if (expense._id.toString() === id) {
-        isValidId = true;
-      }
-    }
-    if (isValidId === false) {
-      return res.status(404).json({ error: `Not valid ID in database: ${id}` });
-    }
-    let newId = new ObjectId(id);
-    const result = await myColl.deleteOne({ _id: new ObjectId(id) });
+    const result = await myColl.deleteMany();
     console.log("Deleted", result);
 
     // 4. Return the it has been created successfully.

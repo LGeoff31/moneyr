@@ -13,7 +13,6 @@ export default async function handler(
         .json({ error: "Method not allowed, only GET is allowed." });
     }
 
-    // Write the actual logic
     // 1. Extract the data from the database.
     const client = await clientPromise;
     const myDB = client.db("budget");
@@ -22,7 +21,6 @@ export default async function handler(
 
     // 2. Return the data.
     return res.status(200).json(budget);
-    //List the TODO
   } catch (e) {
     return res.status(500).json({ error: e });
   }

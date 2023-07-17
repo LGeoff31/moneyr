@@ -15,8 +15,6 @@ const Analysis = () => {
     if (!userEmail) {
       return;
     }
-
-    // fetchData();
   }, [userEmail]);
 
   if (userEmail === "") {

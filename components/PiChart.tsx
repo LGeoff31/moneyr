@@ -1,9 +1,5 @@
 // import React from 'react'
 import React, { useState, useEffect } from "react";
-import Paper from "@mui/material/Paper";
-import Link from "@mui/material/Link";
-import { PieChart } from "@mui/x-charts";
-
 import {
   Chart,
   PieSeries,
@@ -13,7 +9,6 @@ import {
 import { Animation } from "@devexpress/dx-react-chart";
 import { ExpenseType } from "@/pages/history";
 import { Category } from "./ExpenseForm";
-// import { Chart } from "react-google-charts";
 
 type PiChartCategory = {
   category: Category;

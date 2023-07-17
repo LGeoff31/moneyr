@@ -3,6 +3,11 @@ import React, { useState } from "react";
 
 const Calculator = () => {
   const [money, setMoney] = useState<string>("");
+  const calculateWants = (money: string) => (parseInt(money) * 0.5).toFixed(2);
+  const calculateSavingsAndDebt = (money: string) =>
+    (parseInt(money) * 0.3).toFixed(2);
+  const calculateRemaining = (money: string) =>
+    (parseInt(money) * 0.2).toFixed(2);
   return (
     <div>
       <br />
@@ -12,13 +17,7 @@ const Calculator = () => {
             {" "}
             50/30/20 Budget Calculator{" "}
           </Typography>
-          <Typography
-            paddingLeft={2}
-            // paddingLeft={10}
-            // paddingRight={10}
-            // textAlign={"center"}
-            color="grey"
-          >
+          <Typography paddingLeft={2} color="grey">
             Find out how this budgeting approach applies to your money. Our
             50/30/20 calculator divides <br />
             your take-home income into suggested spending in three categories:
@@ -29,7 +28,7 @@ const Calculator = () => {
             <TextField
               variant="outlined"
               label="Monthly after-tax income"
-              placeholder="$0"
+              placeholder="$1000"
               value={money}
               sx={{ width: "30vw" }}
               onChange={(e) => setMoney(e.target.value)}
@@ -47,21 +46,62 @@ const Calculator = () => {
           <Typography paddingLeft={3} fontWeight="bold" variant="h6">
             NECESSITIES
           </Typography>
-          <Typography fontSize={30} paddingLeft={3} color="blue">
-            ${(parseInt(money) * 0.5).toFixed(2)}
+          {
+            //if money undefined render this
+            //else render this
+          }
+          {money ? (
+            <>
+              <Typography fontSize={30} paddingLeft={3} color="blue">
+                ${calculateWants(money)}
+              </Typography>
+              <Typography paddingLeft={3} fontWeight="bold" variant="h6">
+                WANTS
+              </Typography>
+              <Typography fontSize={30} paddingLeft={3} color="blue">
+                ${calculateSavingsAndDebt(money)}
+              </Typography>
+              <Typography paddingLeft={3} fontWeight="bold" variant="h6">
+                SAVINGS AND DEBT REPAYMENT
+              </Typography>
+              <Typography fontSize={30} paddingLeft={3} color="blue">
+                ${calculateRemaining(money)}
+              </Typography>
+            </>
+          ) : (
+            <>
+              <Typography fontSize={30} paddingLeft={3} color="blue">
+                $
+              </Typography>
+              <Typography paddingLeft={3} fontWeight="bold" variant="h6">
+                WANTS
+              </Typography>
+              <Typography fontSize={30} paddingLeft={3} color="blue">
+                $
+              </Typography>
+              <Typography paddingLeft={3} fontWeight="bold" variant="h6">
+                SAVINGS AND DEBT REPAYMENT
+              </Typography>
+              <Typography fontSize={30} paddingLeft={3} color="blue">
+                $
+              </Typography>
+            </>
+          )}
+          {/* <Typography fontSize={30} paddingLeft={3} color="blue">
+            ${calculateWants(money)}
           </Typography>
           <Typography paddingLeft={3} fontWeight="bold" variant="h6">
             WANTS
           </Typography>
           <Typography fontSize={30} paddingLeft={3} color="blue">
-            ${(parseInt(money) * 0.3).toFixed(2)}
+            ${calculateSavingsAndDebt(money)}
           </Typography>
           <Typography paddingLeft={3} fontWeight="bold" variant="h6">
             SAVINGS AND DEBT REPAYMENT
           </Typography>
           <Typography fontSize={30} paddingLeft={3} color="blue">
-            ${(parseInt(money) * 0.2).toFixed(2)}
-          </Typography>
+            ${calculateRemaining(money)}
+          </Typography> */}
         </Card>
         <iframe
           width="1000"

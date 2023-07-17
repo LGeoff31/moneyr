@@ -1,9 +1,7 @@
 import {
   Grid,
-  Card,
   CardContent,
   Button,
-  Link,
   Stack,
   Typography,
   CardActions,
@@ -12,7 +10,6 @@ import {
   styled,
 } from "@mui/material";
 import React from "react";
-import AddIcon from "@mui/icons-material/Add";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -51,7 +48,6 @@ const LearnMore = () => {
           are paid. <br /> Make more informed money decisions by creating custom
           budgets you’ll stick to.
         </Typography>
-
         <img
           className="laptop"
           src="https://www.quicken.com/sites/default/files/lp-core--hero-laptop.png?cc=1"
@@ -114,36 +110,6 @@ const LearnMore = () => {
             </Grid>
           </Grid>
         </Box>
-
-        {/* <Grid>
-          <Card variant="contained">
-            <Grid item xs={8}>
-              <CardContent>
-                <Typography
-                  sx={{ fontSize: 14 }}
-                  color="text.secondary"
-                  gutterBottom
-                >
-                  Word of the Day
-                </Typography>
-                <Typography variant="h5" component="div">
-                  blent
-                </Typography>
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                  adjective
-                </Typography>
-                <Typography variant="body2">
-                  well meaning and kindly.
-                  <br />
-                  {'"a benevolent smile"'}
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Button size="small">Learn More</Button>
-              </CardActions>
-            </Grid>
-          </Card>
-        </Grid> */}
       </Stack>
     </div>
   );

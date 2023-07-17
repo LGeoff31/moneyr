@@ -11,8 +11,6 @@ const ExpenseCard: React.FunctionComponent<{
   fetchData: () => void;
   expense: ExpenseType;
 }> = ({ fetchData, expense }) => {
-  const id = expense._id;
-
   const handleDelete = async () => {
     const response = await fetch(`/api/expenses/delete/${expense._id}`, {
       method: "DELETE",
@@ -22,11 +20,7 @@ const ExpenseCard: React.FunctionComponent<{
     fetchData();
   };
   return (
-    <Card
-      variant="outlined"
-      //   bgcolor={stringToColor(todo.title)}
-    >
-      {/* <CardContent> */}
+    <Card variant="outlined">
       <Stack padding={1}>
         <Typography>Expense Title: {expense.title}</Typography>
         <Typography>

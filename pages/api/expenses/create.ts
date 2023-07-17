@@ -12,8 +12,6 @@ export default async function handler(
         .json({ error: "Method not allowed, only POST is allowed." });
     }
 
-    // Write the actual logic
-
     // 1. Extract the todo data from the request.
     const data = req.body;
     console.log(data);
@@ -37,7 +35,6 @@ export default async function handler(
     if (!isValid) {
       return res.status(400).json({ error: errorMessage });
     }
-    //    Return an error if the data is invalid.
 
     // 3. Add a new todo with this data into the database (MongoDB).
 

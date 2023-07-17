@@ -1,7 +1,5 @@
 import ExpenseForm, { Category } from "@/components/ExpenseForm";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
-import { Link, Stack, TextField } from "@mui/material";
+import { Link } from "@mui/material";
 import React, { useState, useEffect } from "react";
 
 const Create = () => {
@@ -14,8 +12,6 @@ const Create = () => {
     if (!userEmail) {
       return;
     }
-
-    // fetchData();
   }, [userEmail]);
   const handleSubmit = async (
     title: string,
