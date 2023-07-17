@@ -46,10 +46,7 @@ const Calculator = () => {
           <Typography paddingLeft={3} fontWeight="bold" variant="h6">
             NECESSITIES
           </Typography>
-          {
-            //if money undefined render this
-            //else render this
-          }
+
           {money ? (
             <>
               <Typography fontSize={30} paddingLeft={3} color="blue">
@@ -87,21 +84,6 @@ const Calculator = () => {
               </Typography>
             </>
           )}
-          {/* <Typography fontSize={30} paddingLeft={3} color="blue">
-            ${calculateWants(money)}
-          </Typography>
-          <Typography paddingLeft={3} fontWeight="bold" variant="h6">
-            WANTS
-          </Typography>
-          <Typography fontSize={30} paddingLeft={3} color="blue">
-            ${calculateSavingsAndDebt(money)}
-          </Typography>
-          <Typography paddingLeft={3} fontWeight="bold" variant="h6">
-            SAVINGS AND DEBT REPAYMENT
-          </Typography>
-          <Typography fontSize={30} paddingLeft={3} color="blue">
-            ${calculateRemaining(money)}
-          </Typography> */}
         </Card>
         <iframe
           width="1000"

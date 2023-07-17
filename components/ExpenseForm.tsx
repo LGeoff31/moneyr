@@ -9,8 +9,6 @@ import {
   SelectChangeEvent,
   Select,
 } from "@mui/material";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { LoadingButton } from "@mui/lab";
@@ -43,7 +41,13 @@ const ExpenseForm: React.FunctionComponent<{
 
   const innerHandleSubmit = async () => {
     //validate all the inputs
+    if (title === "") {
+      return "BAD";
+    }
     if (value === "") {
+      return "BAD";
+    }
+    if (description === "") {
       return "BAD";
     }
     if (category === "") {

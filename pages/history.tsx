@@ -34,7 +34,6 @@ export enum Filter {
   Category = "Category",
   Oldest = "Oldest to Newest",
   Newest = "Newest to Oldest",
-  //add rank by category
 }
 
 const History = () => {
@@ -167,11 +166,11 @@ const History = () => {
           variant="determinate"
           value={(calculateTotalSpending() / parseInt(monthlyBudget)) * 100}
           sx={{
-            height: "10px", // Adjust the height of the progress bar
-            borderRadius: "5px", // Add rounded corners
-            backgroundColor: "#f1f1f1", // Customize the background color
+            height: "10px",
+            borderRadius: "5px",
+            backgroundColor: "#f1f1f1",
             "& .MuiLinearProgress-bar": {
-              backgroundColor: "#4caf50", // Customize the progress bar color
+              backgroundColor: "#4caf50",
             },
           }}
         />

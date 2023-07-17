@@ -1,7 +1,4 @@
 import React from "react";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import YouTubeIcon from "@mui/icons-material/YouTube";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { Box, Stack, Typography } from "@mui/material";
 import SocialLinkIcon from "./SocialLinkIcon";
 import { BsGithub, BsLinkedin, BsInstagram, BsYoutube } from "react-icons/bs";
@@ -28,13 +25,13 @@ const Footer = () => {
           Made by: Geoffrey Lee
         </Typography>
         <SocialLinkIcon
-          ariaLabel="Github link"
+          ariaLabel="Github"
           link="https://github.com/lgeoff31"
           icon={<BsGithub />}
           size="sm"
         />
         <SocialLinkIcon
-          ariaLabel="Linkedin link"
+          ariaLabel="Linkedin"
           link="https://linkedin.com/lgeoff31"
           icon={<BsLinkedin />}
           size="sm"
@@ -45,12 +42,12 @@ const Footer = () => {
           icon={<BsInstagram />}
           size="sm"
         />
-        {/* <SocialLinkIcon
-          ariaLabel="Download resume"
-          link="/resume.pdf"
+        <SocialLinkIcon
+          ariaLabel="Youtube"
+          link="https://www.youtube.com/@electricochy"
           icon={<BsYoutube />}
           size="sm"
-        /> */}
+        />
       </Stack>
     </Box>
   );

@@ -1,10 +1,8 @@
 import { ExpenseType } from "../pages/history";
-import React, { useState } from "react";
-import { Link, Card, Button, Typography, Stack } from "@mui/material";
+import React from "react";
+import { Card, Button, Typography, Stack } from "@mui/material";
 import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
 import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
 import { format } from "date-fns";
 
 const ExpenseCard: React.FunctionComponent<{

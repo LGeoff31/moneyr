@@ -22,8 +22,6 @@ const SignIn = () => {
     }
     //logged in properly
     localStorage.setItem("email", email);
-
-    // Redirect back home
   };
 
   const handleLogout = async () => {
